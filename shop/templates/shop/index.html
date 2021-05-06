@@ -1,0 +1,145 @@
+{% extends 'shop/basic.html' %}
+{% block title%} index {% endblock %}
+
+{% block body %}
+
+
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+
+    {% for i in range %}
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{i}}" aria-label="Slide 2"></button>
+     {% endfor %}
+
+
+   </div>
+
+    
+<div class="carousel-inner">
+      <div class="carousel-item active" >
+
+
+
+
+     {% for i in xv %}
+    <div class="card mb-3" style=" width: 100rem;">
+  <div class="row g-0">
+    <div class="col-md-4">
+
+      <img src='/media/{{i.image}}' height="500" width="500" alt="...">
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h1 class="card-title"></h1>
+        <p class="card-text">Painting is the practice of applying paint, pigment, color or other medium to a solid surface (called the "matrix" or "support").[1] The medium is commonly applied to the base with a brush, but other implements, such as knives, sponges, and airbrushes, can be used.
+
+In art, the term painting describes both the act and the result of the action (the final work is called "a painting"). The support for paintings includes such surfaces as walls, paper, canvas, wood, glass, lacquer, pottery, leaf, copper and concrete, and the painting may incorporate multiple other materials, including sand, clay, paper, plaster, gold leaf, and even whole objects.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+          <div class="row align-items-end">
+              <br> <br>
+              <p><h4>Price {{i.price}}Rs</h4></p>
+              <br>
+              <br> <br>
+          <div class="col" >
+
+
+
+               <a href="/quickview/{{i.id}}" ><button  id="qv{{i.id}}" class="btn btn-primary me-md-2 " type="button">Quick View</button></a>
+
+
+
+</div>
+              </div>
+      </div>
+
+
+      </div>
+    </div>
+  </div>
+          {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+</div>
+
+    <div class="carousel-item">
+            {% endif%}
+
+            {% endfor %}
+      </div>
+
+             </div>
+
+
+
+
+
+      <div class=" d-md-block">
+          <button class="btn btn-primary" type="button"data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+          </button>
+
+  <button class="btn btn-primary" type="button"data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+
+  </button>
+
+</div>
+
+
+</div>
+{%endblock%}
+
+
+
+
+
+
+
+#-----------------------------------add to cart
+
+
+{% block js %}
+<script >
+  console.log('hiii');
+  if(localStorage.getItem('cart') == null)
+{
+var cart={};
+}
+else{
+cart= JSON.parse(localStorage.getItem('cart'));
+}
+
+
+//jQuery starts here//
+
+
+$('.cart').click(function(){
+
+
+var idstr= this.id.toString();
+
+
+if(cart[idstr]!= undefined) {
+cart[idstr] = cart[idstr]+1;
+}
+else{
+cart[idstr] = 1;
+}
+
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById("cart").innerHTML=Object.keys(cart).length;
+});
+
+</script>
+
+
+
+
+
+
+
+
+{% endblock %}

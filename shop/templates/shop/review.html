@@ -1,0 +1,37 @@
+{% extends 'shop/basic.html' %}
+{% block title%} index {% endblock %}
+
+{% block body %}
+<div class="card" style="width: 82rem;">
+  <div class="card-body">
+    <h2 class="card-title">Adress 1</h2>
+    <div class="card-text">
+      <h5>Name</h5>
+      <h5>House no</h5>
+      <h5>Adress</h5>
+      <h5>Pincode</h5>
+      <h5>city  distric  state  </h5>
+    </div>
+
+
+   <div class="card" style="width: 82rem;">
+  <div class="card-header">
+    Featured
+  </div>
+  <ul class="list-group list-group-flush">
+{% for i in xv %}
+    <li class="list-group-item">{{i.cartname}}
+    </li>
+    {%endfor%}
+
+  </ul>
+
+</div>
+
+
+
+  </div>
+</div>
+<br><br>
+<a href="/payment/" class="btn btn-primary">payment</a>
+{%endblock%}
