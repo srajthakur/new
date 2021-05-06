@@ -38,4 +38,4 @@ virtualenv==20.4.3
 virtualenvwrapper-win==1.2.6
 whitenoise==5.2.0
 xlwt
-django-import-expor
+django-import-export
